@@ -73,33 +73,55 @@ void loop()
 
   if (millis() - tsLastReport > REPORTING_PERIOD_MS)
   {
-    Serial.print("Heart rate:");
+     Serial.print("Heart rate:");
+
     Serial.print(BPM);
+
     Serial.print(" SpO2:");
+
     Serial.print(SpO2);
+
     Serial.println(" %");
 
     oled.clearDisplay();
+
     oled.setTextSize(1);
+
     oled.setTextColor(1);
+
     oled.setCursor(0, 16);
+
+    oled.println(pox.getHeartRate());
+
+
+
+    oled.setTextSize(1);
+
+    oled.setTextColor(1);
+
+    oled.setCursor(0, 0);
+
     oled.println("Heart BPM");
 
-    oled.setTextSize(2);
-    oled.setTextColor(1);
-    oled.setCursor(0, 30);
-    oled.println(BPM);
+
 
     oled.setTextSize(1);
+
     oled.setTextColor(1);
-    oled.setCursor(0, 60);
+
+    oled.setCursor(0, 30);
+
     oled.println("Spo2");
 
-    oled.setTextSize(2);
-    oled.setTextColor(1);
-    oled.setCursor(0, 75);
-    oled.println(SpO2);
 
+
+    oled.setTextSize(1);
+
+    oled.setTextColor(1);
+
+    oled.setCursor(0, 45);
+
+    oled.println(pox.getSpO2());
     oled.display();
 
     tsLastReport = millis();
